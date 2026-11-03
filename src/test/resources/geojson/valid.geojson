@@ -1,0 +1,10 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Mast ved Lillesand", "height": 42.5, "lit": true },
+      "geometry": { "type": "Point", "coordinates": [8.38, 58.25] }
+    }
+  ]
+}

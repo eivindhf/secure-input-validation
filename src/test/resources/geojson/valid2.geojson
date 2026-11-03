@@ -1,0 +1,5 @@
+{
+  "type": "Feature",
+  "properties": { "name": "Kraftledning Ålesund-Ørsta", "category": "line_obstacle", "verified": null },
+  "geometry": { "type": "LineString", "coordinates": [[6.15, 62.47], [6.13, 62.20]] }
+}

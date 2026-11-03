@@ -1,0 +1,7 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature", "properties": { "tags": ["ok", "{{7*7}}"] },
+      "geometry": { "type": "Point", "coordinates": [5.32, 60.39] } }
+  ]
+}

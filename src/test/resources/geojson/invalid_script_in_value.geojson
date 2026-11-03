@@ -1,0 +1,5 @@
+{
+  "type": "Feature",
+  "properties": { "name": "<script>alert(1)</script>" },
+  "geometry": { "type": "Point", "coordinates": [10.75, 59.91] }
+}

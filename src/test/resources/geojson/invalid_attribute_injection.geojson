@@ -1,0 +1,5 @@
+{
+  "type": "Feature",
+  "properties": { "name": "x\" onmouseover=\"alert&#40;1&#41;" },
+  "geometry": { "type": "Point", "coordinates": [10.75, 59.91] }
+}

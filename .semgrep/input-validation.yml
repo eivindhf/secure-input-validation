@@ -1,0 +1,51 @@
+rules:
+  - id: denylist-regex-with-dot-star
+    languages: [java]
+    severity: ERROR
+    message: >-
+      Denylist regex wrapped in ".*...*" used with matches(). "." does not match line breaks,
+      so input such as "ok\n<script>" can bypass the check. Use an anchored allowlist instead.
+    metadata:
+      cwe: "CWE-184: Incomplete List of Disallowed Inputs"
+    patterns:
+      - pattern-either:
+          - pattern: $S.matches("$REGEX")
+          - pattern: |
+              String $V = "$REGEX";
+              ...
+              $S.matches($V);
+          - pattern: |
+              $T $V = "$REGEX";
+              ...
+              $S.matches($V);
+      - metavariable-regex:
+          metavariable: $REGEX
+          regex: ^\.\*\[.*\]\.\*$
+
+  - id: jsonnode-tostring-validation
+    languages: [java]
+    severity: WARNING
+    message: >-
+      JsonNode.toString() returns JSON-escaped text with quotes, not the actual value.
+      Validate node.asText() instead.
+    metadata:
+      cwe: "CWE-20: Improper Input Validation"
+    patterns:
+      - pattern: $VALIDATE($NODE.toString())
+      - metavariable-regex:
+          metavariable: $VALIDATE
+          regex: (?i).*(valid|sanitiz|check).*
+
+  - id: system-out-in-production-code
+    languages: [java]
+    severity: WARNING
+    message: >-
+      Do not print exceptions to System.out in production code. Use a logger, and avoid
+      leaking internal details.
+    metadata:
+      cwe: "CWE-209: Generation of Error Message Containing Sensitive Information"
+    paths:
+      include: ["**/src/main/**/*.java"]
+    pattern-either:
+      - pattern: System.out.println(...)
+      - pattern: $E.printStackTrace()
