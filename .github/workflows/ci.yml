@@ -13,7 +13,7 @@ jobs:
     name: Build and unit tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -34,7 +34,7 @@ jobs:
     container:
       image: semgrep/semgrep
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Scan production code (fails the build on findings)
         run: >
           semgrep scan
@@ -52,7 +52,7 @@ jobs:
     name: Dependency scan (Trivy)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Scan Maven dependencies for known vulnerabilities
         uses: aquasecurity/trivy-action@0.28.0
         with:
